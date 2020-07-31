@@ -1,2 +1,2 @@
-# OopCourse
-This project will be use as a helper to learn OOP using C#
+# Oop Course
+This project will be used as a helper to learn OOP using C#
