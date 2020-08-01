@@ -265,6 +265,3 @@ __pycache__/
 
 #docker env file
 .env
-src/Sales.Management.Web/dist/vendor.js
-src/Sales.Management.Web/dist/main.js
-src/Sales.Management.Web/dist/webpack.js
