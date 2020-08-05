@@ -199,28 +199,25 @@ namespace Lesson.One.Introduction
 
             for (var i = 0; i < alienWords.Length - 1; i++)
             {
-                for (var j = i + 1; j < alienWords.Length; j++)
+                var minLength = Math.Min(alienWords[i].Length, alienWords[i + 1].Length);
+                for (var k = 0; k < minLength; k++)
                 {
-                    var minLength = Math.Min(alienWords[i].Length, alienWords[j].Length);
-                    for (var k = 0; k < minLength; k++)
+                    var iChar = alienWords[i][k];
+                    var jChar = alienWords[i + 1][k];
+
+                    if (alphabetOrder[iChar - 'a'] < alphabetOrder[jChar - 'a'])
                     {
-                        var iChar = alienWords[i][k];
-                        var jChar = alienWords[j][k];
+                        break;
+                    }
 
-                        if (alphabetOrder[iChar - 'a'] < alphabetOrder[jChar - 'a'])
-                        {
-                            break;
-                        }
+                    if (alphabetOrder[iChar - 'a'] > alphabetOrder[jChar - 'a'])
+                    {
+                        return false;
+                    }
 
-                        if (alphabetOrder[iChar - 'a'] > alphabetOrder[jChar - 'a'])
-                        {
-                            return false;
-                        }
-
-                        if (k == minLength - 1 && alienWords[i].Length > alienWords[j].Length)
-                        {
-                            return false;
-                        }
+                    if (k == minLength - 1 && alienWords[i].Length > alienWords[i + 1].Length)
+                    {
+                        return false;
                     }
                 }
             }
