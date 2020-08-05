@@ -108,7 +108,7 @@ namespace Lesson.One.Introduction
 
         public static int FindIndex(int[] source, int element)
         {
-            for (var i = 0; i< source.Length; i++)
+            for (var i = 0; i < source.Length; i++)
             {
                 if (source[i] == element)
                 {
@@ -118,6 +118,13 @@ namespace Lesson.One.Introduction
 
             return -1;
         }
+
+        /*
+            [0,0] [0,1] [0,2] [0, 3]
+            [1,0] [1,1] [1,2] [1, 3]
+            [2,0] [2,1] [2,2] [2, 3]
+            [3,0] [3,1] [3,2] [3, 3]
+        */
 
         public static int SumOfElementsAboveMainDiagonal(int[,] matrix)
         {
@@ -159,12 +166,6 @@ namespace Lesson.One.Introduction
 
             var sum = 0;
             var size = matrix.GetLength(0);
-            /*
-             [0,0] [0,1] [0,2] [0, 3]
-             [1,0] [1,1] [1,2] [1, 3]
-             [2,0] [2,1] [2,2] [2, 3]
-             [3,0] [3,1] [3,2] [3, 3]
-             */
 
             for (var i = 1; i < size; i++)
             {
@@ -175,6 +176,56 @@ namespace Lesson.One.Introduction
             }
 
             return sum;
+        }
+
+        /// <summary>
+        /// In an alien language, surprisingly they also use english lowercase letters, but possibly in a different <c>order</c>.
+        /// The <c>order</c> of the alphabet is some permutation of the lowercase letters.
+        /// </summary>
+        /// <param name="alienWords">A sequence of words written in an alien language. At least 1 word, max 100 words, each word length between 1 and 20.</param>
+        /// <param name="order">The order of the alphabet (length 26).</param>
+        /// <returns>
+        /// Given <paramref name="alienWords"/> and <paramref name="order"/>, return <c>true</c> if and only if the given <paramref name="alienWords"/>
+        /// are sorted lexicographicaly in this alien language.
+        /// </returns>
+        public static bool IsAlienSorted(string[] alienWords, string order)
+        {
+            var alphabetOrder = new int[26];
+
+            for (var i = 0; i < order.Length; i++)
+            {
+                alphabetOrder[order[i] - 'a'] = i;
+            }
+
+            for (var i = 0; i < alienWords.Length - 1; i++)
+            {
+                for (var j = i + 1; j < alienWords.Length; j++)
+                {
+                    var minLength = Math.Min(alienWords[i].Length, alienWords[j].Length);
+                    for (var k = 0; k < minLength; k++)
+                    {
+                        var iChar = alienWords[i][k];
+                        var jChar = alienWords[j][k];
+
+                        if (alphabetOrder[iChar - 'a'] < alphabetOrder[jChar - 'a'])
+                        {
+                            break;
+                        }
+
+                        if (alphabetOrder[iChar - 'a'] > alphabetOrder[jChar - 'a'])
+                        {
+                            return false;
+                        }
+
+                        if (k == minLength - 1 && alienWords[i].Length > alienWords[j].Length)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

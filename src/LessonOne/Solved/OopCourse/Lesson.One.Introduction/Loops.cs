@@ -151,20 +151,19 @@ namespace Lesson.One.Introduction
 
             var begin = 0;
             var end = text.Length - 1;
-            var isPalindrome = true;
 
-            while (begin < end && isPalindrome)
+            while (begin < end)
             {
                 if (text[begin] != text[end])
                 {
-                    isPalindrome = false;
+                    return false;
                 }
 
                 begin++;
                 end--;
             }
 
-            return isPalindrome;
+            return true;
         }
 
         /// <summary>

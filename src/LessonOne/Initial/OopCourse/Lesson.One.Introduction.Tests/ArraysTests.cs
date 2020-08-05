@@ -91,5 +91,15 @@ namespace Lesson.One.Introduction.Tests
 
             Assert.Equal(expectedResult, actual);
         }
+
+        [Theory]
+        [InlineData(new string[] { "hello", "word" }, "hwabcdefgijklmnopqrstuvxyz", true)]
+        [InlineData(new string[] { "word", "world", "row" }, "worldabcefghijkmnpqstuvxyz", false)]
+        [InlineData(new string[] { "apple", "app" }, "abcdefghijklmnopqrstuvwxyz", false)]
+        public void IsAlienSortedTest(string[] words, string order, bool expected)
+        {
+            var actual = Arrays.IsAlienSorted(words, order);
+            Assert.Equal(expected, actual);
+        }
     }
 }
