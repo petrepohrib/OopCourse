@@ -280,7 +280,7 @@ namespace Katas
 
             if (ammount >= 1)
             {
-                numberOf1Notes = ammount / 100;
+                numberOf1Notes = ammount;
             }
 
             Console.WriteLine($"Number of 500 notes: {numberOf500Notes}");
