@@ -58,10 +58,10 @@ namespace Katas
 
         /// <summary>
         /// Write a C# program that allows the user to input an ammount of money and compute the minimum number of
-        /// notes required for the respective ammount. For this exercise we will use the romainian currency.
+        /// notes required for the respective ammount. For this exercise we will use the Romanian currency.
         /// Example: for 575 RON we have: 1 * 500 RON, 1 * 50 RON, 2 * 10 RON, 1 * 5 RON
         /// </summary>
-        /// <remarks>The romainian notes are: 500, 200, 100, 50, 10, 5, 1 RON</remarks>
+        /// <remarks>The Romanian notes are: 500, 200, 100, 50, 10, 5, 1 RON</remarks>
         static void NumberOfNotes()
         {
         }
@@ -78,7 +78,7 @@ namespace Katas
         /// <summary>
         /// Write a C# program to find all roots of a quadratic equation (ax² + bx + c = 0). The program will read from
         /// the console the values for a, b and c and will calculate and display the roots found.
-        /// For sqare root use <see cref="Math.Sqrt(double)"/> and for raising to a power use <see cref="Math.Pow(double, double)"/>.
+        /// For square root use <see cref="Math.Sqrt(double)"/> and for raising to a power use <see cref="Math.Pow(double, double)"/>.
         /// </summary>
         static void RootsOfAQuadraticEquation()
         {
