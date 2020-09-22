@@ -329,7 +329,6 @@ namespace Katas
 
             double a, b, c;
             double r1, r2;
-            string consoleInput;
 
             a = GetDoubleFromConsole("Enter a value for a: ");
             b = GetDoubleFromConsole("Enter a value for b: ");
@@ -463,7 +462,7 @@ namespace Katas
                 i++;
             }
 
-            for(i = 0; i < n; i++)
+            for (i = 0; i < n; i++)
             {
                 Console.WriteLine($"array[{i}] = {array[i]}");
             }
@@ -547,11 +546,11 @@ namespace Katas
             numberClone = number;
 
 
-            while(numberClone != 0)
+            while (numberClone != 0)
             {
                 int digit = numberClone % 10;
                 int factorial = 1;
-                for(int i = 1; i <= digit; i++)
+                for (int i = 1; i <= digit; i++)
                 {
                     factorial *= i;
                 }
