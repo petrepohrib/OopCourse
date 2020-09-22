@@ -95,17 +95,12 @@ namespace Katas
             int a, b;
             int addResult, subtractResult, modulusResult;
             double productResult, divisionResult;
-            string consoleInput;
 
-            Console.WriteLine("Enter a value for a: ");
-            consoleInput = Console.ReadLine();
-            a = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for b: ");
-            consoleInput = Console.ReadLine();
-            b = int.Parse(consoleInput);
+            a = GetIntFromConsole("Enter a value for a: ");
+            b = GetIntFromConsole("Enter a value for b: ");
 
-            addResult = a + b;
-            subtractResult = a - b;
+            addResult = Add(a, b);
+            subtractResult = Subtract(a, b);
             modulusResult = a % b;
             productResult = a * b;
             divisionResult = a / (double)b;
@@ -145,14 +140,9 @@ namespace Katas
         static void MaximumBetweenTwoNumbers()
         {
             int a, b;
-            string consoleInput;
 
-            Console.WriteLine("Enter a value for a: ");
-            consoleInput = Console.ReadLine();
-            a = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for b: ");
-            consoleInput = Console.ReadLine();
-            b = int.Parse(consoleInput);
+            a = GetIntFromConsole("Enter a value for a: ");
+            b = GetIntFromConsole("Enter a value for b: ");
 
             if (a > b)
             {
@@ -177,17 +167,9 @@ namespace Katas
         static void MaximumBetweenThreeNumbers()
         {
             int a, b, c;
-            string consoleInput;
-
-            Console.WriteLine("Enter a value for a: ");
-            consoleInput = Console.ReadLine();
-            a = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for b: ");
-            consoleInput = Console.ReadLine();
-            b = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for c: ");
-            consoleInput = Console.ReadLine();
-            c = int.Parse(consoleInput);
+            a = GetIntFromConsole("Enter a value for a: ");
+            b = GetIntFromConsole("Enter a value for b: ");
+            c = GetIntFromConsole("Enter a value for c: ");
 
             if (a > b)
             {
@@ -258,9 +240,7 @@ namespace Katas
         {
             int ammount;
             int numberOf500Notes = 0, numberOf200Notes = 0, numberOf100Notes = 0, numberOf50Notes = 0, numberOf10Notes = 0, numberOf5Notes = 0, numberOf1Notes = 0;
-            Console.WriteLine("Enter the ammount:");
-            string consoleInput = Console.ReadLine();
-            ammount = int.Parse(consoleInput);
+            ammount = GetIntFromConsole("Enter the ammount:");
 
             if (ammount >= 500)
             {
@@ -319,10 +299,7 @@ namespace Katas
         /// Year is also a leap year if it is exactly divisible by 400.</remarks>
         static void LeapYear()
         {
-            int year;
-            Console.WriteLine("Enter the year:");
-            string consoleInput = Console.ReadLine();
-            year = int.Parse(consoleInput);
+            int year = GetIntFromConsole("Enter the year");
 
             if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
             {
@@ -354,15 +331,9 @@ namespace Katas
             double r1, r2;
             string consoleInput;
 
-            Console.WriteLine("Enter a value for a: ");
-            consoleInput = Console.ReadLine();
-            a = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for b: ");
-            consoleInput = Console.ReadLine();
-            b = int.Parse(consoleInput);
-            Console.WriteLine("Enter a value for c: ");
-            consoleInput = Console.ReadLine();
-            c = int.Parse(consoleInput);
+            a = GetDoubleFromConsole("Enter a value for a: ");
+            b = GetDoubleFromConsole("Enter a value for b: ");
+            c = GetDoubleFromConsole("Enter a value for c: ");
 
             double delta = Math.Pow(b, 2) - (4 * a * c);
 
@@ -395,10 +366,7 @@ namespace Katas
         /// </summary>
         static void NumberOfDays()
         {
-            int month;
-            Console.WriteLine("Enter the month:");
-            string consoleInput = Console.ReadLine();
-            month = int.Parse(consoleInput);
+            int month = GetIntFromConsole("Enter the month");
 
             switch (month)
             {
@@ -484,19 +452,14 @@ namespace Katas
         {
             int[] array;
             int n, i = 0;
-            string consoleInput;
 
-            Console.WriteLine("Enter a value for n");
-            consoleInput = Console.ReadLine();
-            n = int.Parse(consoleInput);
+            n = GetIntFromConsole("Enter the value for n");
 
             array = new int[n];
 
             while (i < n)
             {
-                Console.WriteLine($"Enter value for array[{i}]");
-                consoleInput = Console.ReadLine();
-                array[i] = int.Parse(consoleInput);
+                array[i] = GetIntFromConsole($"Enter value for array[{i}]");
                 i++;
             }
 
@@ -511,11 +474,8 @@ namespace Katas
         /// </summary>
         static void MultiplicationTable()
         {
-            int number;
             short i = 1;
-            Console.WriteLine("Enter the number:");
-            string consoleInput = Console.ReadLine();
-            number = int.Parse(consoleInput);
+            int number = GetIntFromConsole("Enter the number:");
 
             Console.WriteLine("Multiplication table for " + number);
             do
@@ -549,11 +509,8 @@ namespace Katas
         static void PerfectNumbers()
         {
             int n, i = 1;
-            string consoleInput;
 
-            Console.WriteLine("Enter a value for n");
-            consoleInput = Console.ReadLine();
-            n = int.Parse(consoleInput);
+            n = GetIntFromConsole("Enter the value for n");
 
             while (i <= n)
             {
@@ -585,11 +542,8 @@ namespace Katas
         static void StrongNumber()
         {
             int number, numberClone, digitFactorialSum = 0;
-            string consoleInput;
 
-            Console.WriteLine("Enter the number");
-            consoleInput = Console.ReadLine();
-            number = int.Parse(consoleInput);
+            number = GetIntFromConsole("Enter the number");
             numberClone = number;
 
 
@@ -613,6 +567,36 @@ namespace Katas
             {
                 Console.WriteLine("Number is not a strong number");
             }
+        }
+
+        static int GetIntFromConsole(string message = null)
+        {
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Console.WriteLine(message);
+            }
+            string consoleInput = Console.ReadLine();
+            return int.Parse(consoleInput);
+        }
+
+        static double GetDoubleFromConsole(string message = null)
+        {
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Console.WriteLine(message);
+            }
+            string consoleInput = Console.ReadLine();
+            return double.Parse(consoleInput);
+        }
+
+        static int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        static int Subtract(int a, int b)
+        {
+            return a - b;
         }
     }
 }
