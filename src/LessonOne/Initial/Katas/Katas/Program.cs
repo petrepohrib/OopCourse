@@ -76,6 +76,28 @@ namespace Katas
         }
 
         /// <summary>
+        /// Write a C# Sharp program to read temperature in centigrade and display suitable message according to temperature.
+        /// Temp< 0 then Freezing weather
+        /// Temp 0-10 then Very Cold weather
+        /// Temp 10-20 then Cold weather
+        /// Temp 20-30 then Normal in Temp
+        /// Temp 30-40 then Its Hot
+        /// Temp >=40 then Its Very Hot
+        /// </summary>
+        static void DisplayMessageForTemperature()
+        {
+
+        }
+
+        ///<summary>
+        /// Write a C# Sharp program to accept the height of a person in centimeter and categorize the person according to their height.
+        ///</summary>
+        static void CategorizePersonByHeigth()
+        { 
+        
+        }
+
+        /// <summary>
         /// Write a C# program to find all roots of a quadratic equation (ax² + bx + c = 0). The program will read from
         /// the console the values for a, b and c and will calculate and display the roots found.
         /// For square root use <see cref="Math.Sqrt(double)"/> and for raising to a power use <see cref="Math.Pow(double, double)"/>.
