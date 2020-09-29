@@ -314,13 +314,13 @@ namespace Katas
         }
 
         /// <summary>
-        /// Write a C# Sharp program to read temperature in centigrade and display suitable message according to temperature.
-        /// Temp< 0 then Freezing weather
-        /// Temp 0-10 then Very Cold weather
-        /// Temp 10-20 then Cold weather
-        /// Temp 20-30 then Normal in Temp
-        /// Temp 30-40 then Its Hot
-        /// Temp >=40 then Its Very Hot
+        /// Write a C# program that read temperature in Celsius degrees and display suitable message according to temperature.
+        /// Temp< 0 then display 'Freezing weather'.
+        /// Temp 0-10 then display 'Very Cold weather'.
+        /// Temp 10-20 then display 'Cold weather'.
+        /// Temp 20-30 then display 'Normal in Temp'.
+        /// Temp 30-40 then display 'Its Hot.
+        /// Temp >=40 then display 'Its Very Hot'.
         /// </summary>
         static void DisplayMessageForTemperature()
         {
@@ -340,17 +340,21 @@ namespace Katas
         }
 
         ///<summary>
-        /// Write a C# Sharp program to accept the height of a person in centimeter and categorize the person according to their height.
+        /// Write a C# program to accept the height of a person in centimeters and categorize the person according to their height.
+        /// Height is less then 150 then display 'The person is Dwarf'.
+        /// Height greater or equal 150 and height less or equal 165 then display 'The person is  average heighted'.
+        /// Height greater 165 and height less or equal 195 then display 'The person is taller.'.
+        /// Height greater than 195 then display 'Abnormal height.'.
         ///</summary>
         static void CategorizePersonByHeigth()
         {
             var perHeight = GetIntFromConsole("Enter the height of the person (in centimetres) : ");
 
-            if (perHeight < 150.0)
+            if (perHeight < 150)
                 Console.Write("The person is Dwarf. \n\n");
-            else if ((perHeight >= 150.0) && (perHeight <= 165.0))
+            else if ((perHeight >= 150) && (perHeight <= 165))
                 Console.Write("The person is  average heighted. \n\n");
-            else if ((perHeight >= 165.0) && (perHeight <= 195.0))
+            else if ((perHeight > 165) && (perHeight <= 195))
                 Console.Write("The person is taller. \n\n");
             else
                 Console.Write("Abnormal height.\n\n");
