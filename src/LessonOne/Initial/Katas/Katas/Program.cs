@@ -7,7 +7,45 @@ namespace Katas
         static void Main()
         {
             Console.WriteLine("Hello OOP apprentices!");
+
+            int year = 2020;
+            // A year is said to be leap year, if the year is exactly divisible by 4 but and not divisible by 100.
+            /// Year is also a leap year if it is exactly divisible by 400.
+            //bool condition1 = year % 4 == 0;
+
+            //bool condition2 = year % 100 != 0; // !(year % 100 == 0)
+
+            //bool condition3 = year % 400 == 0;
+
+            ////bool result = condition1 && condition2 || condition3;
+
+            //bool result = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0; // true
+
+            //// bool condition ? true branch : false branch;
+            //int leapYearResult = result ? 1 : 2;
+            //Console.WriteLine(leapYearResult);
+
+            // int addResult = Adunare(3, 6);
+            //MyLeapYear(year);
+            //MyLeapYear(2050);
+            //MyLeapYear(20320);
+            //MyLeapYear(3);
+
+            // PrimitiveDataTypesIO();
+            // MaximumBetweenTwoNumbers();
+            //MaximumBetweenThreeNumbers();
+
+            LeapYear();
+
         }
+
+
+        static int Adunare(int a, int b)
+        {
+            return a + b;
+        }
+
+
 
         /*
          HINT: Use https://docs.microsoft.com/en-us/dotnet/api/system.console?view=netcore-3.1 to learn more 
@@ -23,8 +61,19 @@ namespace Katas
         /// <remarks>Prmitive value types are char, short, int, long, float, double, decimal</remarks>
         static void PrimitiveDataTypesIO()
         {
+            string consoleInput;
+            Console.WriteLine("Please enter a number");
+            consoleInput = Console.ReadLine();
+            double number = double.Parse(consoleInput);
+            Console.WriteLine("Numarul tau este " + number);
         }
 
+        static int GetIntFromConsole(string message)
+        {
+            Console.WriteLine(message);
+            string consoleInput = Console.ReadLine();
+            return int.Parse(consoleInput);
+        }
         /// <summary>
         /// Write a C# program that reads two natural numbers from the console
         /// and then perform all arithmetic opeartions between them and display the results.
@@ -47,6 +96,24 @@ namespace Katas
         /// </summary>
         static void MaximumBetweenTwoNumbers()
         {
+            int a = GetIntFromConsole("Introduceti numarul a");
+            int b = GetIntFromConsole("Introduceti numarul b");
+
+            if (a > b)
+            {
+                Console.WriteLine(a + " este mai mare ca " + b);
+            }
+            else
+            {
+                if (a == b)
+                {
+                    Console.WriteLine(a + " este egal cu " + b);
+                }
+                else
+                {
+                    Console.WriteLine(b + " este mai mare ca " + a);
+                }
+            }
         }
 
         /// <summary>
@@ -54,6 +121,51 @@ namespace Katas
         /// </summary>
         static void MaximumBetweenThreeNumbers()
         {
+            //a,b,c
+            int a = GetIntFromConsole("Introduceti numarul a");
+            int b = GetIntFromConsole("Introduceti numarul b");
+            int c = GetIntFromConsole("Introduceti numarul c");
+
+            if (a > b)
+            {
+                if (a > c)
+                {
+                    Console.WriteLine(a + " este mai mare decat  " + b + " si " + c);
+                }
+                else
+                {
+                    if (a < c)
+                    {
+                        Console.WriteLine(c + " este mai mare decat  " + a + " si " + b);
+                    }
+                    else
+                    {
+                        Console.WriteLine(a + " este egal cu" + c);
+                    }
+                }
+            }
+            else
+            {
+                if (a == b)
+                {
+                    // Console.WriteLine(a + " este egal cu " + b);
+                    if (b > c)
+                    { Console.WriteLine(b + " este mai mare decat  " + c + " si " + a); }
+                    else if (b < c)
+                    { Console.WriteLine(c + " mai mare " + b + " si " + a); }
+                    else
+                    { Console.WriteLine(b+" si "+ c+" si " +a+" sunt egale"); }
+                }
+                else if(a < b)
+                {
+                    if (b > c)
+                    { Console.WriteLine(b + " este mai mare decat  " + c + " si " + a); }
+                    else if (b < c)
+                    { Console.WriteLine(c + " mai mare " + b + " si " + a); }
+                    else
+                    { Console.WriteLine(b + " si " + c + " si " + a + " sunt egale"); }
+                }
+            }
         }
 
         /// <summary>
@@ -66,6 +178,14 @@ namespace Katas
         {
         }
 
+        static void MyLeapYear(int year)
+
+        {
+            bool result = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            string leapYearResult = result ? "This is a leap year" : "This is not a leap year";
+            Console.WriteLine(leapYearResult);
+        }
+
         /// <summary>
         /// Write a C# program that read a year from the console and checks if that year is a leap year.
         /// </summary>
@@ -73,6 +193,18 @@ namespace Katas
         /// Year is also a leap year if it is exactly divisible by 400.</remarks>
         static void LeapYear()
         {
+            int year = GetIntFromConsole("Introduceti anul");
+            bool result = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+
+            if (result)
+            {
+                Console.WriteLine(year + " is a Leap Year");
+            }
+            else
+            {
+                Console.WriteLine (year + " is not a Leap Year" );
+            }
+
         }
 
         /// <summary>
