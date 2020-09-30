@@ -342,8 +342,8 @@ namespace Katas
         ///<summary>
         /// Write a C# program to accept the height of a person in centimeters and categorize the person according to their height.
         /// Height is less then 150 then display 'The person is Dwarf'.
-        /// Height greater or equal 150 and height less or equal 165 then display 'The person is  average heighted'.
-        /// Height greater 165 and height less or equal 195 then display 'The person is taller.'.
+        /// Height greater or equal 150 and height less or equal 165 then display 'The person is average heighted'.
+        /// Height greater 165 and height less or equal 195 then display 'The person is taller'.
         /// Height greater than 195 then display 'Abnormal height.'.
         ///</summary>
         static void CategorizePersonByHeigth()
