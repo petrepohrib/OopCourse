@@ -41,7 +41,18 @@ namespace Lesson.One.Introduction
         /// <returns>The sum of the digits of the <paramref name="number"/></returns>
         public static int SumOfTheDigits(int number)
         {
-            throw new NotImplementedException("Implement me 🥺");
+            int suma = 0;
+
+            while (number != 0)
+            {
+                int n = number % 10;
+
+                suma += n;
+
+                number /= 10;
+            }
+
+            return suma;
         }
 
         /// <summary>

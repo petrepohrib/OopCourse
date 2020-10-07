@@ -41,7 +41,10 @@ namespace Katas
             //NumberOfDays();
             // MultiplicationTable();
             // ReadArrayFromKeyboard();
-            PrintAllOddnaturalNumberTo100();
+            //PrintAllOddnaturalNumberTo100();
+            //PrintDescendingOddNumbersFromN();
+            //PerfectNumbers();
+            StrongNumber();
         }
 
 
@@ -113,6 +116,11 @@ namespace Katas
         /// <remarks>The formula for convertion is: <c>C° = (F° - 32) * 5/9</c></remarks>
         static void FahrenheitToCelsiusConvert()
         {
+            string input = Console.ReadLine();
+            // "34.57"
+            double f = double.Parse(input);
+            double c = (f - 32) * 5 / 9;
+            Console.WriteLine(c);
         }
 
         /// <summary>
@@ -200,6 +208,59 @@ namespace Katas
         /// <remarks>The Romanian notes are: 500, 200, 100, 50, 10, 5, 1 RON</remarks>
         static void NumberOfNotes()
         {
+            int ammount;
+            int numberOf500Notes = 0, numberOf200Notes = 0, numberOf100Notes = 0, numberOf50Notes = 0, numberOf10Notes = 0, numberOf5Notes = 0, numberOf1Notes = 0;
+            ammount = GetIntFromConsole("Enter the ammount:");
+
+            if (ammount >= 500)
+            {
+                numberOf500Notes = ammount / 500;
+                ammount -= numberOf500Notes * 500;
+            }
+
+            if (ammount >= 200)
+            {
+                numberOf200Notes = ammount / 200;
+                ammount -= numberOf200Notes * 200;
+            }
+
+            if (ammount >= 100)
+            {
+                numberOf100Notes = ammount / 100;
+                ammount -= numberOf100Notes * 100;
+            }
+
+            if (ammount >= 50)
+            {
+                numberOf50Notes = ammount / 50;
+                ammount -= numberOf50Notes * 50;
+            }
+
+            if (ammount >= 10)
+            {
+                numberOf10Notes = ammount / 10;
+                ammount -= numberOf10Notes * 10;
+            }
+
+            if (ammount >= 5)
+            {
+                numberOf5Notes = ammount / 5;
+                ammount -= numberOf5Notes * 5;
+            }
+
+            if (ammount >= 1)
+            {
+                numberOf1Notes = ammount;
+            }
+
+            Console.WriteLine($"Number of 500 notes: {numberOf500Notes}");
+            Console.WriteLine($"Number of 200 notes: {numberOf200Notes}");
+            Console.WriteLine($"Number of 100 notes: {numberOf100Notes}");
+            Console.WriteLine($"Number of 50 notes: {numberOf50Notes}");
+            Console.WriteLine($"Number of 10 notes: {numberOf10Notes}");
+            Console.WriteLine($"Number of 5 notes: {numberOf5Notes}");
+            Console.WriteLine($"Number of 1 notes: {numberOf1Notes}");
+
         }
 
         static void MyLeapYear(int year)
@@ -477,6 +538,27 @@ namespace Katas
         /// </remarks>
         static void PerfectNumbers()
         {
+            int n;
+
+            n = GetIntFromConsole("Introdu n");
+
+            for( int i =1; i <= n; i ++)
+            {
+                int suma = 0;
+                for (int j =1; j <= i/2; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        suma += j;
+                        //suma = suma + j;
+                    }
+                }
+
+                if (suma == i)
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
 
         /// <summary>
@@ -488,6 +570,105 @@ namespace Katas
         /// </remarks>
         static void StrongNumber()
         {
+            /* 
+              n! = 1 * 2* 3 * .... * n 
+             */
+            /*
+            145
+                145 % 10 = 5
+                145 / 10 = 14
+                factorial(5)
+                suma += factorial(5)
+            14 
+                14 % 10 = 4
+                14 / 10 = 1
+            1 
+                1 %10 = 1
+                1 / 10 = 0
+            0
+            */
+
+            int a = GetIntFromConsole("Strong Number");
+            int suma = 0;
+            int auxiliar = a;
+            int b;
+            int factorial;
+
+            /* 
+            fac = 1 * 2* 3 * .... * b 
+            */
+            while (auxiliar != 0)
+            {
+                b = auxiliar % 10;
+                auxiliar /= 10;
+                factorial = 1;
+                int c;
+
+                for (c = 1; c <= b; c++)
+                {
+                    factorial *= c;
+                }
+                suma += factorial;
+            }
+
+            if (a == suma)
+            {
+                Console.WriteLine("Numarul este puternic");
+            }
+            else
+            {
+                Console.WriteLine("Numarul nu este puternic!");
+            }
+
+
+
+
+        }
+
+        static void PrintDescendingOddNumbersFromN()
+        {
+            // n
+            int n = GetIntFromConsole("n = ");
+
+            int contor;
+
+            //While
+            contor = n;
+            while (contor > 0)
+            {
+                if (contor % 2 == 1)
+                {
+                    Console.Write(contor + ", ");
+                }
+                contor--;
+            }
+            Console.WriteLine();
+
+            //Do while
+            contor = n;
+
+            do
+            {
+                if (contor <= 0)
+                {
+                    break;
+                }
+
+                if (contor % 2 != 0)
+                {
+                    Console.Write(contor + ", ");
+                }
+                contor--;
+            } while (contor > 0);
+            Console.WriteLine();
+            //For
+            for (contor = n; contor > 0; contor--)
+            {
+                if (contor % 2 != 0)
+                {
+                    Console.Write(contor + ", ");
+                }
+            }
         }
     }
 }
