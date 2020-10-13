@@ -9,31 +9,56 @@ namespace BankAccount
         // Can perform: Deposit,  Withdrawl and Display information about the bank account.
         public static void Main(string[] args)
         {
-            int n = GetIntFromConsole("Enter how many bank accounts you need..");
+            // If you want to read all dates from console.
+            //int n = 2;
+            //BankAccount[] bankAccounts = new BankAccount[n];
+            //ReadBankAccounts(bankAccounts, n);
+
+            int n = 2;
             BankAccount[] bankAccounts = new BankAccount[n];
-            ReadBankAccounts(bankAccounts, n);
-            DisplayBankAccounts(bankAccounts, n);
-            AvarageInterest(bankAccounts, n);
-            DepositeDoubleBalanceForOwnerBill(bankAccounts, n);
-            WithdrawalHalfBalance(bankAccounts, n);
+            bankAccounts[0] = new BankAccount("Billy", 8200m, 5m, "2222 3234 4313 4353");
+            bankAccounts[1] = new BankAccount("Anne", 5600m, 6m, "9999 4323 1244 5421");
+
+            DisplayBankAccounts(bankAccounts);
+            AvarageInterest(bankAccounts);
+            DepositeDoubleBalanceForOwnerBill(bankAccounts);
+            WithdrawalHalfBalance(bankAccounts);
+        }
+
+        /// <summary>
+        /// Write a C# program to read the details for a bank account.
+        /// </summary>
+        static BankAccount ReadDetailsForBankAccount()
+        {
+            string owner, numberAccount;
+            decimal interest, balance;
+
+            Console.Write("Owner = ");
+            owner = Console.ReadLine();
+
+            Console.Write("NumberAccount = ");
+            numberAccount = Console.ReadLine();
+
+            Console.Write("Interest = ");
+            interest = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Balance = ");
+            balance = decimal.Parse(Console.ReadLine());
+
+            BankAccount bankAccount = new BankAccount(owner, balance, interest, numberAccount);
+            return bankAccount;
         }
 
         /// <summary>
         /// Write a C# program to read all details for the bank accounts.
         /// </summary>
-        static void ReadBankAccounts(BankAccount[] bankAccounts, int n)
+        static void ReadBankAccounts(BankAccount[] bankAccounts)
         {
             int i = 0;
-            string owner, numberAccount;
-            decimal interest, balance;
 
-            while (i < n)
+            while (i < bankAccounts.Length)
             {
-                owner = GetStringFromConsole("Owner = ");
-                numberAccount = GetStringFromConsole("Number account = ");
-                interest = GetDecimalFromConsole("Interest = ");
-                balance = GetDecimalFromConsole("Balance = ");
-                BankAccount bankAccount = new BankAccount(owner, balance, interest, numberAccount);
+                BankAccount bankAccount = ReadDetailsForBankAccount();
                 bankAccounts[i] = bankAccount;
                 i++;
             }
@@ -42,10 +67,10 @@ namespace BankAccount
         /// <summary>
         /// Write a C# program to display all details for those bank accounts.
         /// </summary>
-        static void DisplayBankAccounts(BankAccount[] bankAccounts, int n)
+        static void DisplayBankAccounts(BankAccount[] bankAccounts)
         {
             int i = 0;
-            while (i < n)
+            while (i < bankAccounts.Length)
             {
                 bankAccounts[i].DisplayDetails();
                 i++;
@@ -55,29 +80,30 @@ namespace BankAccount
         /// <summary>
         /// Write a C# program to calculate the average interest of the bank accounts.
         /// </summary>
-        static void AvarageInterest(BankAccount[] bankAccounts, int n)
+        static void AvarageInterest(BankAccount[] bankAccounts)
         {
             int i = 0;
+            int arrayLength = bankAccounts.Length;
             decimal avarageInterest = 0m;
-            while (i < n)
+            while (i < arrayLength)
             {
-                avarageInterest += bankAccounts[i].Interest;
+                avarageInterest += bankAccounts[i].interest;
                 i++;
             }
-            Console.WriteLine("The avarange interest for the bank accounts is: " + avarageInterest / n);
+            Console.WriteLine("The avarange interest for the bank accounts is: " + avarageInterest / arrayLength);
         }
 
         /// <summary>
         /// Write a C# program to deposite double of the balance, for each account which owner name contains 'Billy' word.
         /// </summary>
-        static void DepositeDoubleBalanceForOwnerBill(BankAccount[] bankAccounts, int n)
+        static void DepositeDoubleBalanceForOwnerBill(BankAccount[] bankAccounts)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < bankAccounts.Length; i++)
             {
                 BankAccount bankAccount = bankAccounts[i];
-                if (bankAccount.Owner.Contains("Billy"))
+                if (bankAccount.owner.Contains("Billy"))
                 {
-                    bankAccount.Deposit(bankAccount.Balance * 2);
+                    bankAccount.Deposit(bankAccount.balance * 2);
                 }
             }
         }
@@ -85,49 +111,16 @@ namespace BankAccount
         /// <summary>
         /// Write a C# program to withdrawal a half of the balance, for each account which account number contains '2222'.
         /// </summary>
-        static void WithdrawalHalfBalance(BankAccount[] bankAccounts, int n)
+        static void WithdrawalHalfBalance(BankAccount[] bankAccounts)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < bankAccounts.Length; i++)
             {
                 BankAccount bankAccount = bankAccounts[i];
-                if (bankAccount.AccountNumber.Contains("2222"))
+                if (bankAccount.accountNumber.Contains("2222"))
                 {
-                    bool successful = bankAccount.Withdrawal(bankAccount.Balance * 1 / 2);
-                    if (successful)
-                    {
-                        Console.WriteLine("The withdrawal action was successful");
-                    }
+                   bankAccount.Withdrawal(bankAccount.balance * 1 / 2);
                 }
             }
-        }
-
-        static decimal GetDecimalFromConsole(string message = null)
-        {
-            if (!string.IsNullOrWhiteSpace(message))
-            {
-                Console.WriteLine(message);
-            }
-            string consoleInput = Console.ReadLine();
-            return decimal.Parse(consoleInput);
-        }
-
-        static string GetStringFromConsole(string message = null)
-        {
-            if (!string.IsNullOrWhiteSpace(message))
-            {
-                Console.WriteLine(message);
-            }
-            return Console.ReadLine();
-        }
-
-        static int GetIntFromConsole(string message = null)
-        {
-            if (!string.IsNullOrWhiteSpace(message))
-            {
-                Console.WriteLine(message);
-            }
-            string consoleInput = Console.ReadLine();
-            return int.Parse(consoleInput);
         }
     }
 }

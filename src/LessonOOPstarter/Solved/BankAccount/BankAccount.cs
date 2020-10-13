@@ -6,25 +6,25 @@ namespace BankAccount
     {
         // A bank account has an owner, balance, interest and number account.
         // Can perform: Deposit,  Withdrawl and Display information about the bank account.
-        public string Owner { get; set; }
-        public decimal Balance { get; set; }
-        public decimal Interest { get; set; }
-        public string AccountNumber { get; set; }
+        public string owner;
+        public decimal balance;
+        public decimal interest;
+        public string accountNumber;
 
         public BankAccount()
         {
-            Owner = string.Empty;
-            Balance = 0m;
-            Interest = 0m;
-            AccountNumber = string.Empty;
+            this.owner = string.Empty;
+            this.balance = 0m;
+            this.interest = 0m;
+            this.accountNumber = string.Empty;
         }
 
-        public BankAccount(string owner, decimal sold, decimal interest, string accountNumber)
+        public BankAccount(string owner, decimal balance, decimal interest, string accountNumber)
         {
-            Owner = owner;
-            Balance = sold;
-            Interest = interest;
-            AccountNumber = accountNumber;
+            this.owner = owner;
+            this.balance = balance;
+            this.interest = interest;
+            this.accountNumber = accountNumber;
         }
 
         public void Deposit(decimal amount)
@@ -34,13 +34,13 @@ namespace BankAccount
                 throw new ApplicationException("Invalid deposit amount");
             }
 
-            Balance += amount;
+            this.balance += amount;
             Console.WriteLine("The amount you deposited is: " + amount);
         }
 
-        public bool Withdrawal(decimal withdrawalAmount)
+        public void Withdrawal(decimal withdrawalAmount)
         {
-            if (withdrawalAmount > Balance)
+            if (withdrawalAmount > this.balance)
             {
                 throw new ApplicationException("Insufficient funds!");
             }
@@ -49,19 +49,24 @@ namespace BankAccount
                 throw new ApplicationException("Invalid withdrawal amount!");
             }
 
-            Balance -= withdrawalAmount;
-
-            return true;
+            this.balance -= withdrawalAmount;
+            Console.WriteLine("The withdrawal action was successful. Your actual balanace is:" + this.balance);
         }
 
         public void DisplayDetails()
         {
-            Console.WriteLine("-------------Bank account details are---------------");
-            Console.WriteLine("Owner: " + Owner);
-            Console.WriteLine("Current balance: " + Balance);
-            Console.WriteLine("Interest: " + Interest);
-            Console.WriteLine("Account number: " + AccountNumber);
-            Console.WriteLine();
+            Console.WriteLine(this.ToString());
+        }
+
+        public override string ToString()
+        {
+            var output = $@"-------------Bank account details are---------------
+                        Owner: {this.owner}
+                        Current balance: {this.balance}
+                        Interest: {this.interest}
+                        Account number: {this.accountNumber}";
+            return output;
+
         }
     }
 }
